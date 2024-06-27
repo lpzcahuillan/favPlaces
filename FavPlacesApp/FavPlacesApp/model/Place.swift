@@ -5,8 +5,8 @@
 //  Created by Hugo López on 18-06-24.
 //
 
-import Foundation
-import CoreLocation
+import CoreData
+import MapKit
 
 
 class Place:Identifiable {

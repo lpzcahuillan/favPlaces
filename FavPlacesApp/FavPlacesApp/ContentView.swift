@@ -10,6 +10,10 @@ import MapKit
 
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(sortDescriptors: .init())
+    private var items: FetchedResults
+
     @State var position = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: -33.4433764, longitude: -70.6539788), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)))
     @State var places:[Place] = []
     @State var showPopUp:CLLocationCoordinate2D?=nil
@@ -85,6 +89,7 @@ struct ContentView: View {
     }
     
     func savePlace(name:String, fav:Bool, coordinate:CLLocationCoordinate2D) {
+        
         let place = Place(name: name, coordinates: coordinate, fav: fav)
         places.append(place)
     }
